@@ -19,8 +19,33 @@ namespace AND_Test.Controllers
         public PhoneNoController(IPhoneNoRepository repo)
         {
             _repository = repo;
+        }   
+        [Route("")]
+        public IHttpActionResult GetAll()
+        {
+            return Ok(_repository.GetAll().ToList<PhoneNumber>());
         }
-      
-     
+
+        [HttpGet]
+        [Route("CustomerID={id:int}")]
+        public IHttpActionResult GetCustomerPhones(int id)
+        {
+            IList<PhoneNumber> res = _repository.GetAllForCustomer(id);
+            if (res == null || res.Count == 0)
+                return NotFound();
+            return Ok(res.ToList<PhoneNumber>());
+        }
+
+        [HttpPut]
+        [Route("{id:int}/Activate")]
+        public IHttpActionResult ActivatePhoneNo(int id)
+        {
+            if (!_repository.MakeItActive(id))
+                return Content(HttpStatusCode.NotFound, false);
+            return Content(HttpStatusCode.Accepted, true);
+        }
+
+
+
     }
 }

@@ -80,6 +80,7 @@ namespace AND_Test.Tests
             // Assert
             Assert.IsInstanceOfType(actionResult, typeof(NotFoundResult));
         }
+        [TestMethod]
         public void ActivatePhoneNumberReturnsNotFound()
         {
             // Arrange
@@ -89,12 +90,16 @@ namespace AND_Test.Tests
             var controller = new PhoneNoController(mockRepository.Object);
 
             // Act
-            IHttpActionResult actionResult = controller.ActivatePhoneNo (1);
-
+            IHttpActionResult actionResult = controller.ActivatePhoneNo(1);
+            var contentResult = actionResult as NegotiatedContentResult<bool>;
             // Assert
-            Assert.IsInstanceOfType(actionResult, typeof(NotFoundResult));
+            Assert.IsNotNull(contentResult);
+            Assert.AreEqual(HttpStatusCode.NotFound, contentResult.StatusCode);
+            Assert.IsNotNull(contentResult.Content);
+            Assert.AreEqual(false, contentResult.Content);
         }
 
+        [TestMethod]
         public void ActivatePhoneNumberSuccess()
         {
             // Arrange
