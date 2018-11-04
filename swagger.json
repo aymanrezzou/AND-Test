@@ -1,0 +1,74 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "v1",
+    "title" : "AND Digital Test"
+  },
+  "host" : "andphonenumberstest.azurewebsites.net",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/api/PhoneNumbers" : {
+      "get" : {
+        "tags" : [ "PhoneNo" ],
+        "operationId" : "PhoneNo_GetAll",
+        "consumes" : [ ],
+        "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "type" : "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/PhoneNumbers/CustomerID={id}" : {
+      "get" : {
+        "tags" : [ "PhoneNo" ],
+        "operationId" : "PhoneNo_GetCustomerPhones",
+        "consumes" : [ ],
+        "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "type" : "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/PhoneNumbers/{id}/Activate" : {
+      "put" : {
+        "tags" : [ "PhoneNo" ],
+        "operationId" : "PhoneNo_ActivatePhoneNo",
+        "consumes" : [ ],
+        "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "type" : "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : { }
+}
