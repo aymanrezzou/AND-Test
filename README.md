@@ -1,5 +1,5 @@
 # AND-Test
-PhneNumbers API example
+Phone Numbers API example
 
 The API assembly is hosted on azure web app which is being called through:
 https://app.swaggerhub.com/apis-docs/A9689/and-digital_test/v1 where you can notice that client code and API definition are generated with Swagger. However you can test API endpoints directly to http://andphonenumberstest.azurewebsites.net/
